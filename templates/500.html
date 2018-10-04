@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body>
+
+        <div class="nav-container">
+        </div>
+        <div class="main-container">
+            <section class="height-100 bg-dark">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <i class="icon-compass display-4"></i>
+                            <h1 class="h2">Uhoh, Internal Server Error (500)</h1>
+                            <span>The page you requested couldn't be loaded at this time. <a href="{% url 'index' %}" class="text-white">Go back home</a> or <a href="{% url 'contact_us' %}" class="text-white">Contact us</a> if you think this might be a mistake.</span>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            <!--end of section-->
+        </div>
+
+
+
+    </body>
+{% endblock %}
+</html>

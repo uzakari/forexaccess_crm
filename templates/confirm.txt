@@ -1,0 +1,10 @@
+Dear {{ user.f_name }},
+
+Welcome to ForexAccess!
+
+To confirm your account please click on the following link:
+    {{ url_for('confirmv', token=token, _external=True) }}
+Sincerely,
+
+The ForexAccess Team
+Note: replies to this email address are not monitored. address are not monitored

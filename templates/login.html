@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as bot %}
+{% block title %}Forexacces-login{% endblock %}
+
+{% block page_content %}
+            <div class="page-header">
+                <h1>Login</h1>
+            </div>
+            <div class="col-md-offset-7">
+                {{ bot.quick_form(form) }}
+                  <p>Forget Your Password?
+
+                        <a href="{{ url_for('password_reset') }}">
+                    Click here to reset it.
+                    </a>
+                    </p>
+            </div>
+{% endblock %}
