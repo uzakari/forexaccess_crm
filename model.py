@@ -22,13 +22,6 @@ app.config['RECAPTCHA_PRIVATE_KEY'] = '6LebczEUAAAAAGlXAFCBtN5TYv-X4cRvJkhKhuJd'
 app.config['SECRET_KEY'] ='GoodboyUltimate'
 app.config['TESTING'] = False
 app.config.from_pyfile('config.cfg')
-# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# app.config['MAIL_USERNAME'] = 'uzakari84@gmail.com'
-# app.config['MAIL_PASSWORD']  = 'Goodboy2'
-# app.config['MAIL_DEBUG'] = True
 
 admin = Admin(app)
 
