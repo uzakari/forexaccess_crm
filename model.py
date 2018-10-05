@@ -123,9 +123,17 @@ def load_user(user_id):
     return UserData.query.get(int(user_id))
 
 
+class Permission:
+    REGACC = 2
+    EDITACC = 4
+    VIEWACC = 8
+    ADMIN = 16
+
+
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
+    default = db.Column(db.Boolean, default=False, index=True)
     permissions = db.Column(db.Integer)
     users = db.relationship('UserData', backref='role')
 
@@ -151,13 +159,25 @@ class Role(db.Model):
     def reset_permission(self):
         self.permissions = 0
 
-
-class Permission:
-    REGACC = 2
-    EDITACC = 4
-    VIEWACC = 8
-    ADMIN = 16
-
+    @staticmethod
+    def insert_role():
+        roles = {
+            'User': [Permission.REGACC],
+            'Sales': [Permission.VIEWACC, Permission.REGACC],
+            'Administrator': [Permission.REGACC, Permission.VIEWACC, Permission.EDITACC, Permission.ADMIN]
+        }
+        default_role = 'User'
+        for r in roles:
+            role = Role.query.filter_by(name=r).first()
+            if role is None:
+                role = Role(name=r)
+            role.reset_permission()
+            for prem in roles[r]:
+                role.add_permission(prem)
+            role.default = (role.name == default_role)  # returning true or false
+            db.session.add(role)
+        db.session.commit()
+        
 
 class WithDrawal(db.Model):
     id = db.Column(db.Integer, primary_key=True)

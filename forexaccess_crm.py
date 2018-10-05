@@ -147,7 +147,6 @@ def withdrawal():
         user = UserData.query.filter_by(email=current_user.email).first_or_404()
         t_balance = user.account_balance
         if user:
-
             if form.Amount_withdraw.data > str(t_balance):
                  flash('You have insufficient balance to make this transaction')
             else:
